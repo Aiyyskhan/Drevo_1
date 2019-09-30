@@ -11,3 +11,7 @@ def mod(lst):
 mod(a)
 
 print(a)
+
+
+def f(arg):
+	return arg ** 2
