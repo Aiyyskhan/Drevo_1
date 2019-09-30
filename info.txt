@@ -1,0 +1,9 @@
+Металлические шестерни
+
+dxf файлы для лазерного станка
+f3d файл для AutoDesk Fusion360
+
+Metal gears
+
+dxf files for laser machine
+f3d file for AutoDesk Fusion360
