@@ -7,4 +7,7 @@ for i in a[:3]:
 import arcade
 import numpy as np
 
-print('test')
+if len(a) > 0:
+	print('hello')
+else:
+	exit()
