@@ -17,6 +17,7 @@ SAVING_WINNER = True
 
 class Game:
     def __init__(self):
+        # генерация случайных цветов для особей
         self.color_r = np.random.randint(50, 220, NUM_PLAYERS) #np.linspace(126, 194, NUM_PLAYERS).astype(int)
         self.color_g = np.random.randint(50, 220, NUM_PLAYERS) #np.linspace(130, 114, NUM_PLAYERS).astype(int)
         self.color_b = np.random.randint(50, 220, NUM_PLAYERS) #np.linspace(45, 29, NUM_PLAYERS).astype(int)
@@ -37,6 +38,7 @@ class Game:
         self.best_players = []
         self.best_player_reward = 0.0
 
+        # основные пути загрузки родителей и сохранения финишеров
         self.main_load_path = "data/20_hid_neurons/level_6_20200903/individ_5.3.20"
         self.main_save_path = "data/20_hid_neurons/level_6_20200903/"
 
@@ -49,6 +51,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.drawing = Drawing(self.sc, self.sc_map)
 
+        # данные игровой карты
         self.finish_coords = set()
         self.wall_coord_list = list()
         self.world_map, self.collision_walls = get_map(TILE)
@@ -58,9 +61,11 @@ class Game:
             elif signature == "2":
                 self.finish_coords.add(coord)
         
+        # каждая особь популяции имеет свой начальный угол поворота
         self.angle_diff = 360 // NUM_PLAYERS
         self.players = []
         
+        # создание игроков - особей популяции
         for i in range(NUM_PLAYERS):
             player = Player(self.sc, self.collision_walls, self.finish_coords)
             player.color = (self.color_r[i], self.color_g[i], self.color_b[i])
@@ -141,10 +146,8 @@ class Game:
         #     "data/level_4_20200901/individ_5.3.30.gen8_10.npy"
         # ]
 
-        self.load_paths = []
-        for i in range(0, 50):
-            path = f"{self.main_load_path}_{i}.npy"
-            self.load_paths.append(path)
+        # генератор списка путей родителей
+        self.load_paths = [f"{self.main_load_path}_{i}.npy" for i in range(0, 50)]
 
         # self.main_load_path = "data/20_hid_neurons/level_1_1_20200903/individ_5.3.20"
         # for i in range(59, 70):
