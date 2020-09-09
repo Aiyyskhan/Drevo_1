@@ -13,7 +13,7 @@ from ray_casting import RayCast
 
 ORIGIN_MODE = False # False если эволюция инициируется от сохраненных родителей
 NEURON_ADDITION_MODE = False
-SAVING_WINNER = True
+SAVING_WINNER = False
 
 class Game:
     def __init__(self):
